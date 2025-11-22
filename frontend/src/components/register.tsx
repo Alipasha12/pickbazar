@@ -9,20 +9,20 @@ import {
 
 export default function RegisterPage() {
 
-  async function for_register() {
-    const data = await fetch("http://127.0.0.1:8000/Register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        long_url: "data",
-        short_url: "sss",
-      }),
-    });
-    const response = await data.json();
-    console.log(response);
-  }
+  // async function for_register() {
+  //   const data = await fetch("http://127.0.0.1:8000/Register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       long_url: "data",
+  //       short_url: "sss",
+  //     }),
+  //   });
+  //   const response = await data.json();
+  //   console.log(response);
+  // }
 
 
   return (
@@ -68,7 +68,7 @@ export default function RegisterPage() {
         <button
           className="px-4 py-2 w-full rounded border-black border-2"
           type="submit"
-          onClick={for_register}
+          // onClick={for_register}
         >
           Register
         </button>
