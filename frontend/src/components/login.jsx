@@ -5,12 +5,50 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+
 import RegisterPage from "./register";
 import Image from "next/image";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const [Data, setData] = useState({
+    email: "",
+    password: "",
+  });
+    
+  const router = useRouter();
+
+  function handleChange(e) {
+    setData({
+      ...Data,
+      [e.target.id]: e.target.value,
+    });
+  }
+  async function for_login(e) {
+    e.preventDefault();
+    
+    const res = await fetch("http://127.0.0.1:8000/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(Data),
+    });
+    const response = await res.json();
+    if (response.token)
+      router.push("/")
+    else
+      alert("something is invalid")
+    console.log(response)
+    console.log("Login response",JSON.stringify(response,null,2));
+  }
+
   return (
-    <form className="flex flex-col gap-7 max-h-130 max-w-full py-9">
+    <form
+      className="flex flex-col gap-7 max-h-130 max-w-full py-9"
+      onSubmit={for_login}
+    >
       <div className="flex flex-col items-center text-center pb-10 gap-3">
         <Image
           alt="image is missing"
@@ -26,7 +64,9 @@ export default function LoginPage() {
           <input
             className="px-4 py-2 w-full rounded border-black border-2"
             type="email"
-            id="text"
+            id="email"
+            value={Data.email}
+            onChange={handleChange}
             placeholder="pickbazar@gmail.com"
             required
           />
@@ -37,6 +77,8 @@ export default function LoginPage() {
             className="px-4 py-2 w-full rounded border-black border-2"
             type="password"
             id="password"
+            value={Data.password}
+            onChange={handleChange}
             placeholder="********"
             required
           />

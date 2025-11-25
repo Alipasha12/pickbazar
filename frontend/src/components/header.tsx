@@ -5,15 +5,16 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } 
 import LoginPage from "./login";
 
 export default function Header(){
+
     return(
-        <div className="flex justify-between fixed w-full p-3 bg-white">
+        <div className="flex justify-between fixed w-full p-3 px-10 bg-white">
         <div className=" h-10 w-60 flex">
           <Image
             alt="image is missing"
             className="bg-cover"
             src="/Logo-new.webp"
-            width={250}
-            height={80}
+            width={200}
+            height={70}
           />
         </div>
         <div className="">
@@ -55,8 +56,8 @@ export default function Header(){
               <Dialog>
                 <DialogTrigger>Join</DialogTrigger>
                 <DialogContent>
-                  <DialogTitle></DialogTitle>
-                  <DialogDescription></DialogDescription>
+                  {/* <DialogTitle>DASD</DialogTitle> */}
+                  {/* <DialogDescription>DASDAS</DialogDescription> */}
                   <LoginPage />
                 </DialogContent>
               </Dialog>

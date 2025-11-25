@@ -14,20 +14,25 @@ import {
   Watch,
   Speaker,
   X,
- 
+  Apple,
+  Croissant,
+  BedDouble,
+  Backpack,
 } from "lucide-react";
 import { data } from "../offline/data";
 import { useState } from "react";
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { GiClothes, GiLipstick } from "react-icons/gi";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const [dropdown,setDropDown] = useState(false);
 
   return (
     <div className="relative">
-      <Header/>
+      <Header />
       <Image
         alt="hey"
         className="flex pt-13"
@@ -43,31 +48,36 @@ export default function Home() {
           <SlidersHorizontal />
           Filter
         </button>
-        <button className="flex p-2 gap-8">
+        <button className="flex p-2 gap-8"
+        onClick={()=>setDropDown(!dropdown)}>
           <Headphones />
           Gadget
         </button>
       </div>
 
+      {/* filter slidebar */}
+
       <div
-        className={`sticky w-full max-w-screen md:max-w-1/2 h-screen grid  top-0 left-0 bottom-0 bg-gray-50 p-3 ${
+        className={`sticky slidebar z-50 w-full max-w-screen md:max-w-1/2 h-screen grid top-0 left-0 bottom-0 bg-gray-50 p-3 ${
           open ? "block" : "hidden"
         }`}
       >
         <nav className="flex items-center justify-between">
           <div>
-            <Image alt="image is miising" className="" src="/Logo-new.webp"
-            width={250}
-            height={80} />
+            <Image
+              alt="image is miising"
+              className=""
+              src="/Logo-new.webp"
+              width={200}
+              height={70}
+            />
           </div>
-          <div>
             <div
-              className="cursor-pointer border-1 rounded-2xl bg-gray-100"
+              className="cursor-pointer rounded-2xl bg-gray-100"
               onClick={() => setOpen(false)}
             >
               <X />
             </div>
-          </div>
         </nav>
         <ul className="text-[25px]">
           <li>
@@ -153,14 +163,60 @@ export default function Home() {
         </ul>
       </div>
 
-      <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 justify-center items-center w-full mx-auto px-10 md:px-6">
+      {/* Gadget dropdown */}
+
+      <div className={`sticky bg-white flex z-50 ${dropdown ? "absolute" : "hidden"} ml-[85.4%]`}>
+       
+          <div className="flex">
+            <ul className="flex flex-col gap-1">
+              <li className="flex gap-3 p-2.5">
+                <Apple size={20} strokeWidth={0.5}/>
+              </li>
+              <li className="flex gap-3 p-2">
+                <Croissant size={20} strokeWidth={0.5} />
+              </li>
+              <li className="flex gap-3 p-2">
+                <GiLipstick/>
+              </li>
+              <li className="flex gap-3 p-2">
+                <Backpack size={20} strokeWidth={0.5} />
+              </li>
+              <li className="flex gap-3 p-2">
+                <GiClothes/>
+              </li>
+              <li className="flex gap-3 p-2">
+                <BedDouble size={20} strokeWidth={0.5} />
+              </li>
+              <li className="flex gap-3 p-2">
+                <Apple size={20} strokeWidth={0.5} />
+              </li>
+            </ul>
+          </div>
+           <ul className="">
+          <li className="flex gap-3  p-2">Grocery</li>
+          <li className="flex gap-3 p-2">Bakery</li>
+          <li className="flex gap-3 p-2">Makeup</li>
+          <li className="flex gap-3 p-2">Bags</li>
+          <li className="flex gap-3 p-2">Clothing</li>
+          <li className="flex gap-3 p-2">Furniture</li>
+          <li className="flex gap-3 p-2">Daily Needs</li>
+        </ul>
+      </div>
+
+      <div className={`${dropdown ? "absolute top-151" : "" } grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 justify-center items-center w-full mx-auto px-10 md:px-6`}>
         {data.map((item) => {
           return (
             <div
               key={item.id}
               className="border border-slate-200 p-4 rounded-md shadow w-full"
             >
-              <Image alt="" width={400} height={400} src={item.img} className="rounded" />
+              <Image
+                alt=""
+                width={400}
+                height={400}
+                src={item.img}
+                className="rounded"
+              />
               <div className="flex flex-col ">
                 <h1>{item.title}</h1>
                 <p className="text-gray-400">{item.description}</p>
@@ -175,7 +231,7 @@ export default function Home() {
           );
         })}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
