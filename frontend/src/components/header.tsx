@@ -8,7 +8,7 @@ export default function Header(){
 
     return(
         <div className="flex justify-between fixed w-full p-3 px-10 bg-white">
-        <div className=" h-10 w-60 flex">
+        <div className="flex h-10 w-60">
           <Image
             alt="image is missing"
             className="bg-cover"

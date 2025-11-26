@@ -28,7 +28,7 @@ import { GiClothes, GiLipstick } from "react-icons/gi";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-  const [dropdown,setDropDown] = useState(false);
+  const [dropdown, setDropDown] = useState(false);
 
   return (
     <div className="relative">
@@ -40,7 +40,7 @@ export default function Home() {
         width={2560}
         height={300}
       />
-      <div className="flex sticky w-full top-13 bg-white justify-between p-4 *:border-2 *:m-2 *:w-50">
+      <div className="flex sticky w-full top-[55px] bg-white justify-between p-4 *:border-2 *:m-2 *:w-50">
         <button
           className="flex p-2 gap-8 cursor-pointer"
           onClick={() => setOpen(!open)}
@@ -48,18 +48,58 @@ export default function Home() {
           <SlidersHorizontal />
           Filter
         </button>
-        <button className="flex p-2 gap-8"
-        onClick={()=>setDropDown(!dropdown)}>
-          <Headphones />
-          Gadget
-        </button>
+        <div>
+          <button
+            className="flex p-2 gap-8"
+            onClick={() => setDropDown(!dropdown)}
+          >
+            <Headphones />
+            Gadget
+            <div
+              className={`flex bg-white z-120 top-17 right-6 w-50 ${
+                dropdown ? "absolute" : "hidden"
+              }`}
+            >
+              <ul className=" *:flex *:gap-3 *:items-center *:p-2 border-2 w-full">
+                <li className="">
+                  <Apple size={20} strokeWidth={0.5} />
+                  Grocery
+                </li>
+                <li className="">
+                  <Croissant size={20} strokeWidth={0.5} />
+                  Bakery
+                </li>
+                <li className="">
+                  <GiLipstick />
+                  Makeup
+                </li>
+                <li className="">
+                  <Backpack size={20} strokeWidth={0.5} />
+                  Bags
+                </li>
+                <li className="">
+                  <GiClothes />
+                  Clothing
+                </li>
+                <li className="">
+                  <BedDouble size={20} strokeWidth={0.5} />
+                  Furniture
+                </li>
+                <li className="">
+                  <Apple size={20} strokeWidth={0.5} />
+                  Daily Needs
+                </li>
+              </ul>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* filter slidebar */}
 
       <div
-        className={`sticky slidebar z-50 w-full max-w-screen md:max-w-1/2 h-screen grid top-0 left-0 bottom-0 bg-gray-50 p-3 ${
-          open ? "block" : "hidden"
+        className={`flex fixed flex-col slidebar z-120 w-full md:max-w-1/2 h-screen top-0 left-0 bottom-0 bg-gray-50 p-3 ${
+          open ? "absolute" : "hidden"
         }`}
       >
         <nav className="flex items-center justify-between">
@@ -72,92 +112,72 @@ export default function Home() {
               height={70}
             />
           </div>
-            <div
-              className="cursor-pointer rounded-2xl bg-gray-100"
-              onClick={() => setOpen(false)}
-            >
-              <X />
-            </div>
+          <div
+            className="cursor-pointer rounded-2xl bg-gray-100"
+            onClick={() => setOpen(false)}
+          >
+            <X />
+          </div>
         </nav>
         <ul className="text-[25px]">
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Gamepad2 />
-              </span>
-              <span>Console</span>
+              <Gamepad2 />
+              Console
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <LaptopMinimal />
-              </span>
-              <span>Laptop</span>
+              <LaptopMinimal />
+              Laptop
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Monitor />
-              </span>
-              <span>Monitor</span>
+              <Monitor />
+              Monitor
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Cable />
-              </span>
-              <span>Accessories</span>
+              <Cable />
+              Accessories
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Camera />
-              </span>
-              <span>Camera</span>
+              <Camera />
+              Camera
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Headphones />
-              </span>
-              <span>Headphone</span>
+              <Headphones />
+              Headphone
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <FaMobile />
-              </span>
-              <span>Mobiles</span>
+              <FaMobile />
+              Mobiles
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Router />
-              </span>
-              <span>Router</span>
+              <Router />
+              Router
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Watch />
-              </span>
-              <span>Smart Watch</span>
+              <Watch />
+              Smart Watch
             </div>
           </li>
           <li>
             <div className="flex p-3 gap-3 text-[18px]">
-              <span className="flex items-center">
-                <Speaker />
-              </span>
-              <span>Sound Box</span>
+              <Speaker />
+              Sound Box
             </div>
           </li>
         </ul>
@@ -165,45 +185,11 @@ export default function Home() {
 
       {/* Gadget dropdown */}
 
-      <div className={`sticky bg-white flex z-50 ${dropdown ? "absolute" : "hidden"} ml-[85.4%]`}>
-       
-          <div className="flex">
-            <ul className="flex flex-col gap-1">
-              <li className="flex gap-3 p-2.5">
-                <Apple size={20} strokeWidth={0.5}/>
-              </li>
-              <li className="flex gap-3 p-2">
-                <Croissant size={20} strokeWidth={0.5} />
-              </li>
-              <li className="flex gap-3 p-2">
-                <GiLipstick/>
-              </li>
-              <li className="flex gap-3 p-2">
-                <Backpack size={20} strokeWidth={0.5} />
-              </li>
-              <li className="flex gap-3 p-2">
-                <GiClothes/>
-              </li>
-              <li className="flex gap-3 p-2">
-                <BedDouble size={20} strokeWidth={0.5} />
-              </li>
-              <li className="flex gap-3 p-2">
-                <Apple size={20} strokeWidth={0.5} />
-              </li>
-            </ul>
-          </div>
-           <ul className="">
-          <li className="flex gap-3  p-2">Grocery</li>
-          <li className="flex gap-3 p-2">Bakery</li>
-          <li className="flex gap-3 p-2">Makeup</li>
-          <li className="flex gap-3 p-2">Bags</li>
-          <li className="flex gap-3 p-2">Clothing</li>
-          <li className="flex gap-3 p-2">Furniture</li>
-          <li className="flex gap-3 p-2">Daily Needs</li>
-        </ul>
-      </div>
-
-      <div className={`${dropdown ? "absolute top-151" : "" } grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 justify-center items-center w-full mx-auto px-10 md:px-6`}>
+      <div
+        className={` ${
+          dropdown ? "top-151 z-10" : ""
+        } grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 justify-center items-center w-full mx-auto px-10 md:px-6`}
+      >
         {data.map((item) => {
           return (
             <div
@@ -222,7 +208,7 @@ export default function Home() {
                 <p className="text-gray-400">{item.description}</p>
                 <div className="flex justify-center border-2 hover:bg-emerald-500">
                   <div className="w-[90%] text-center">ADD</div>
-                  <div className="flex border-1 rounded justify-center items-center w-[15%]">
+                  <div className="flex rounded justify-center items-center w-[15%]">
                     <Plus />
                   </div>
                 </div>
