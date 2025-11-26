@@ -1,7 +1,7 @@
 import { ChevronDown, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import LoginPage from "./login";
 
 export default function Header(){

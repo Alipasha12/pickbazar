@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/components/header";
-import { Facebook, Instagram, MapPin, Twitter } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Image from "next/image";
 import Shop from "@/offline/shop";
 import Footnav from "@/components/footnav";
@@ -14,7 +14,7 @@ export default function shops() {
       </h1>
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pt-10 px-20 sm:px-30 xl:px-50 ">
-        {Shop.map((item: any) => (
+        {Shop.map((item) => (
           <div
             key={item.id}
             className="border-slate-200 p-4 rounded-md shadow w-full"

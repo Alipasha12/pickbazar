@@ -2,7 +2,7 @@
 import Footer from "@/components/footer";
 import Footnav from "@/components/footnav";
 import Header from "@/components/header";
-import { ChevronDown, Facebook, House, Instagram, Twitter } from "lucide-react";
+import { ChevronDown, House} from "lucide-react";
 import Image from "next/image";
 
 export default function offer() {
