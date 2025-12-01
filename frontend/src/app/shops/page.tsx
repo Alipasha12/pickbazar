@@ -20,14 +20,14 @@ export default function shops() {
             className="border-slate-200 p-4 rounded-md shadow w-full"
           >
             <div className="flex gap-4 items-center">
-              <div >
-                <Image
-                  alt={item.title}
-                  width={65}
-                  height={65}
-                  src={item.img}
-                  className="rounded-4xl"
-                />
+                <div >
+                  <Image
+                    alt={item.title}
+                    width={65}
+                    height={65}
+                    src={item.img}
+                    className="rounded-4xl"
+                  />
               </div>
               <div className="mt-2">
                 <h1 className="text-lg font-medium pl-1">{item.description}</h1>
